@@ -1,0 +1,30 @@
+PINTASAN ASPRICU DENGAN IKON (Android Chrome & iPhone/iPad)
+
+Mengapa ikon tidak muncul?
+Aplikasi Apps Script berjalan di dalam bingkai milik Google, sehingga tag ikon di Index.html
+(apple-touch-icon dan manifest) diabaikan HP. Karena itu pintasan tampil dengan huruf/ikon kosong.
+Solusi: halaman kecil ini dipasang di hosting statis gratis, membawa ikon + manifest sendiri,
+lalu membuka aplikasi Anda di dalamnya. Aplikasi dan datanya tidak berubah.
+
+LANGKAH (GitHub Pages, gratis)
+1. Buka index.html dengan Notepad. Ganti GANTI_DENGAN_ALAMAT_EXEC_ANDA dengan alamat Web App
+   Apps Script (berakhiran /exec). Simpan.
+2. Buat akun di github.com, buat repositori baru (public), mis. nama: aspricu.
+3. Add file > Upload files: unggah SEMUA isi folder ini (index.html, manifest.webmanifest, sw.js,
+   .nojekyll, dan folder icons). Commit.
+4. Settings > Pages > Source: Deploy from a branch > main / (root) > Save.
+5. Tunggu 1-2 menit. Alamat baru: https://NAMAAKUN.github.io/aspricu/
+   (Alternatif: Netlify Drop / Cloudflare Pages, cukup seret folder ini.)
+
+MEMBUAT PINTASAN
+- Android (Chrome): hapus pintasan lama, buka alamat baru, menu titik tiga > Instal aplikasi
+  (atau Tambahkan ke layar utama).
+- iPhone/iPad (Safari): hapus ikon lama, buka alamat baru di SAFARI, Bagikan > Tambah ke Layar Utama.
+  (Harus Safari; hasil dari Chrome iOS bisa berbeda.)
+
+OPSIONAL: ikon di tab bila Web App dibuka langsung
+Setelah hosting jadi, di Apps Script > Project Settings > Script Properties, isi
+ICON_URL = https://NAMAAKUN.github.io/aspricu/icons/icon-192.png
+lalu Deploy > Kelola deployment > Edit > Versi baru > Deploy. (Tidak perlu pasangIkon()/Google Drive lagi.)
+
+Bila Anda mengganti ikon di kemudian hari, hapus pintasan lama lalu buat lagi; HP menyimpan ikon lama.

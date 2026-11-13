@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ASPRICU</title>
+<meta name="application-name" content="ASPRICU">
+<meta name="theme-color" content="#0f172a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ASPRICU">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<style>
+  html,body{margin:0;height:100%;background:#0f172a;overflow:hidden}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#0f172a}
+  #msg{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;
+       color:#e2e8f0;font:16px/1.5 system-ui,sans-serif;text-align:center}
+</style>
+</head>
+<body>
+<div id="msg">Alamat aplikasi belum diisi. Buka file index.html, lalu isi APPS_SCRIPT_URL.</div>
+<iframe id="app" allow="camera *; microphone *; fullscreen *; clipboard-write *; clipboard-read *; geolocation *" title="ASPRICU"></iframe>
+<script>
+  /* >>> ISI SATU BARIS INI dengan alamat Web App Apps Script Anda (yang berakhiran /exec) <<< */
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwT2g7OoRgvf8zJAKri0_SOZIzfObYC8t49j_7ZnrqoJ6EQszqVEXJsCjjhlyCB1MY/exec';
+
+  if (!/^https:\/\/script\.google\.com\/.+\/exec/.test(APPS_SCRIPT_URL)) {
+    document.getElementById('app').style.display = 'none';
+    document.getElementById('msg').style.display = 'flex';
+  } else {
+    document.getElementById('app').src = APPS_SCRIPT_URL;
+  }
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+</script>
+</body>
+</html>
